@@ -10,6 +10,8 @@ curl -i -XPOST -H"Content-Type: application/json" localhost:8084/time-entries/ -
 
 cf create-service SERVICE PLAN SERVICE_INSTANCE [-c PARAMETERS_AS_JSON] [-t TAGS]
 
+cf create-service p-service-registry standard tracker-service-registry
+
 cf create-service p-mysql 100mb tracker-allocations-database
 cf create-service p-mysql 100mb tracker-backlog-database
 cf create-service p-mysql 100mb tracker-registration-database
@@ -30,3 +32,19 @@ cf bind-service tracker-allocations tracker-allocations-database
 cf bind-service tracker-backlog tracker-backlog-database
 cf bind-service tracker-registration tracker-registration-database
 cf bind-service tracker-timesheets tracker-timesheets-database
+
+
+cd ~/workspace/assignment-submission
+./gradlew cloudNativeDeveloperDistributedSystemDeployment \
+    -PregistrationServerUrl=https://tracker-registration.apps.pikes.pal.pivotal.io/ \
+    -PbacklogServerUrl=https://tracker-backlog.apps.pikes.pal.pivotal.io/ \
+    -PallocationsServerUrl=https://tracker-allocations.apps.pikes.pal.pivotal.io/ \
+    -PtimesheetsServerUrl=https://tracker-timesheets.apps.pikes.pal.pivotal.io/
+
+    curl https://spring-cloud-broker.${APPS_DOMAIN}/info
+    curl https://spring-cloud-broker.${APPS_DOMAIN}/info
+
+    curl https://spring-cloud-broker.apps.evans.pal.pivotal.io/info | jq
+
+    1.3.3.RELEASE
+    org.springframework.cloud:spring-cloud-commons:1.3.3.RELEASE
