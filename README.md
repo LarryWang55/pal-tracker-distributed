@@ -48,3 +48,9 @@ cd ~/workspace/assignment-submission
 
     1.3.3.RELEASE
     org.springframework.cloud:spring-cloud-commons:1.3.3.RELEASE
+
+./gradlew cloudNativeDeveloperDistributedSystemWithServiceDiscovery \
+    -PregistrationServerUrl=https://tracker-registration.apps.pikes.pal.pivotal.io/ \
+    -PbacklogServerUrl=https://tracker-backlog.apps.pikes.pal.pivotal.io/ \
+    -PallocationsServerUrl=https://tracker-allocations.apps.pikes.pal.pivotal.io/ \
+    -PtimesheetsServerUrl=https://tracker-timesheets.apps.pikes.pal.pivotal.io/
